@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PsiIndex</string>
+    <string name="google_maps_key">AIzaSyANmo4MPH9cNnldAUa0YG0raWlLl6LgwVk</string>
+    <string name="app_title">PSI Index</string>
 </resources>
