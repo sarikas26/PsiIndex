@@ -1,4 +1,4 @@
-package com.capgemini.sarikin.psiindex.ui.activities.adapter
+package com.capgemini.sarikin.psiindex.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View

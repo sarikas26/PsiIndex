@@ -7,7 +7,7 @@ import com.capgemini.sarikin.psiindex.R
 import com.capgemini.sarikin.psiindex.dialog.CustomListViewDialog
 import com.capgemini.sarikin.psiindex.model.PsiResponse
 import com.capgemini.sarikin.psiindex.model.Readings
-import com.capgemini.sarikin.psiindex.ui.activities.adapter.CustomDialogAdapter
+import com.capgemini.sarikin.psiindex.ui.adapter.CustomDialogAdapter
 import com.capgemini.sarikin.psiindex.utils.Utility
 import com.capgemini.sarikin.psiindex.viewmodel.PsiDataViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
