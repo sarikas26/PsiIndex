@@ -2,6 +2,7 @@ package com.capgemini.sarikin.psiindex.di.module
 
 import com.capgemini.sarikin.psiindex.api.ApiService
 import com.capgemini.sarikin.psiindex.api.SchedulerProvider
+import com.capgemini.sarikin.psiindex.constants.PsiAppConstants
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -28,7 +29,8 @@ class NetworkModule {
      */
     @Provides
     @Singleton
-    fun provideSchedulerProvider() = SchedulerProvider(Schedulers.io(), AndroidSchedulers.mainThread())
+    fun provideSchedulerProvider() =
+        SchedulerProvider(Schedulers.io(), AndroidSchedulers.mainThread())
 
     /**
      * Provides Gson instance.
@@ -64,7 +66,7 @@ class NetworkModule {
     @Singleton
     fun provideApiService(gson: Gson, okHttpClient: OkHttpClient): ApiService {
         return Retrofit.Builder()
-            .baseUrl("https://api.data.gov.sg/v1/environment/")
+            .baseUrl(PsiAppConstants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)

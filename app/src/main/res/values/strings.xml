@@ -5,4 +5,5 @@
     <string name="marker_title_string">Click to see Psi Index details for : %1$s</string>
     <string name="loading_string">Loading...</string>
     <string name="national_string">national</string>
+    <string name="readings_title_string">Readings :</string>
 </resources>

@@ -1,17 +1,21 @@
 package com.capgemini.sarikin.psiindex.ui.activities
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.capgemini.sarikin.psiindex.R
+import com.capgemini.sarikin.psiindex.dialog.CustomListViewDialog
 import com.capgemini.sarikin.psiindex.model.PsiResponse
+import com.capgemini.sarikin.psiindex.model.Readings
+import com.capgemini.sarikin.psiindex.ui.activities.adapter.CustomDialogAdapter
+import com.capgemini.sarikin.psiindex.utils.Utility
 import com.capgemini.sarikin.psiindex.viewmodel.PsiDataViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import dagger.android.AndroidInjection
 import javax.inject.Inject
@@ -21,7 +25,7 @@ import javax.inject.Inject
  *
  * Activity to display Psi Index data on google maps.
  */
-class MainActivity : BaseActivity(), OnMapReadyCallback {
+class MainActivity : BaseActivity(), OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
 
     @Inject
     lateinit var psiDataViewModel: PsiDataViewModel
@@ -29,6 +33,8 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
     private var mapFragment: SupportMapFragment? = null
     private var googleMap: GoogleMap? = null
     private lateinit var psiData: PsiResponse
+    private var customDialog: CustomListViewDialog? = null
+    private lateinit var readings: Readings
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +59,7 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
             this,
             Observer { psiData ->
                 this.psiData = psiData
-                Log.d("MainActivity123", psiData.items.size.toString())
+                readings = psiData.items[0].readings
                 mapFragment?.getMapAsync(this)
             })
 
@@ -90,6 +96,7 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
         }
 
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(test, 10f))
+        googleMap.setOnInfoWindowClickListener(this)
     }
 
     /**
@@ -100,5 +107,18 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
         markerOptions.position(latLng).title(getString(R.string.marker_title_string, name))
 
         googleMap?.addMarker(markerOptions)
+    }
+
+    override fun onInfoWindowClick(marker: Marker?) {
+        // Display Data for selected region in a dialog.
+        val dataAdapter = CustomDialogAdapter(
+            Utility.getReadingDetails(
+                readings,
+                Utility.getRegionTitle(marker?.title)
+            )
+        )
+        customDialog = CustomListViewDialog(this@MainActivity, dataAdapter)
+        customDialog?.show()
+        customDialog?.setCanceledOnTouchOutside(true)
     }
 }

@@ -4,20 +4,19 @@
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
     android:orientation="horizontal"
-    android:padding="13dp">
+    android:padding="@dimen/dime13">
 
     <ProgressBar
         android:id="@+id/loader"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="5dp" />
+        android:layout_width="@dimen/dimen45"
+        android:layout_height="@dimen/dimen45"
+        android:layout_marginEnd="@dimen/dimen5" />
 
     <TextView
         android:id="@+id/loading_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_toEndOf="@+id/loader"
         android:text="@string/loading_string"
         android:textAppearance="?android:textAppearanceSmall" />
 
