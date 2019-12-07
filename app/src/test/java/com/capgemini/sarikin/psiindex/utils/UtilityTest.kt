@@ -145,7 +145,7 @@ class UtilityTest {
     }
 
     private fun createTestData1(): List<ReadingDetailsPair> {
-        var readingDetailsPair = ArrayList<ReadingDetailsPair>()
+        val readingDetailsPair = ArrayList<ReadingDetailsPair>()
         readingDetailsPair.add(ReadingDetailsPair(PsiAppConstants.co_eight_hour_max, "11"))
         readingDetailsPair.add(ReadingDetailsPair(PsiAppConstants.co_sub_index, "11"))
         readingDetailsPair.add(ReadingDetailsPair(PsiAppConstants.no2_one_hour_max, "11"))
@@ -162,7 +162,7 @@ class UtilityTest {
     }
 
     private fun createTestData2(): List<ReadingDetailsPair> {
-        var readingDetailsPair = ArrayList<ReadingDetailsPair>()
+        val readingDetailsPair = ArrayList<ReadingDetailsPair>()
         readingDetailsPair.add(ReadingDetailsPair(PsiAppConstants.co_eight_hour_max, "12"))
         readingDetailsPair.add(ReadingDetailsPair(PsiAppConstants.co_sub_index, "11"))
         readingDetailsPair.add(ReadingDetailsPair(PsiAppConstants.no2_one_hour_max, "14"))

@@ -41,29 +41,29 @@ class PsiDataViewModelTest {
     private val schedulerProvider =
         SchedulerProvider(Schedulers.trampoline(), Schedulers.trampoline())
 
-    private lateinit var PsiDataViewModel: PsiDataViewModel
+    private lateinit var psiDataViewModel: PsiDataViewModel
 
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        PsiDataViewModel = PsiDataViewModel(mockRepository, schedulerProvider)
-        PsiDataViewModel.getResponseData().observeForever(responseObserver)
-        PsiDataViewModel.getErrorMsg().observeForever(errorObserver)
-        PsiDataViewModel.getProgressDialog().observeForever(progressObserver)
+        psiDataViewModel = PsiDataViewModel(mockRepository, schedulerProvider)
+        psiDataViewModel.getResponseData().observeForever(responseObserver)
+        psiDataViewModel.getErrorMsg().observeForever(errorObserver)
+        psiDataViewModel.getProgressDialog().observeForever(progressObserver)
         testData = TestUtils.getResponseData(javaClass)
     }
 
     @Test
     fun testApiFetchData_null() {
         Mockito.`when`(mockRepository.fetchDataFromApi()).thenReturn(null)
-        Assert.assertNotNull(PsiDataViewModel.getResponseData())
-        Assert.assertTrue(PsiDataViewModel.getResponseData().hasObservers())
+        Assert.assertNotNull(psiDataViewModel.getResponseData())
+        Assert.assertTrue(psiDataViewModel.getResponseData().hasObservers())
     }
 
     @Test
     fun testApiFetchData_Success() {
         Mockito.`when`(mockRepository.fetchDataFromApi()).thenReturn(Single.just(testData))
-        PsiDataViewModel.fetchDataFromApi()
+        psiDataViewModel.fetchDataFromApi()
         Mockito.verify(progressObserver).onChanged(false)
         Mockito.verify(responseObserver).onChanged(testData)
     }
@@ -72,7 +72,7 @@ class PsiDataViewModelTest {
     fun testApiFetchData_Error() {
         Mockito.`when`(mockRepository.fetchDataFromApi())
             .thenReturn(Single.error(Throwable("Error")))
-        PsiDataViewModel.fetchDataFromApi()
+        psiDataViewModel.fetchDataFromApi()
         Mockito.verify(progressObserver).onChanged(false)
         Mockito.verify(errorObserver).onChanged("Error")
     }

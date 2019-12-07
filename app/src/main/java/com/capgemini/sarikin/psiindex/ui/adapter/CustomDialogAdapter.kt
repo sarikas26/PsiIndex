@@ -24,13 +24,13 @@ class CustomDialogAdapter(
     }
 
     override fun onBindViewHolder(dataViewHolder: DataViewHolder, i: Int) {
-        dataViewHolder.mTextView.text = readingDetailsPair[i].title +  " : " +readingDetailsPair[i].value
+        dataViewHolder.mTextView.text =
+            "${readingDetailsPair[i].title} : ${readingDetailsPair[i].value}"
     }
 
     override fun getItemCount(): Int {
         return readingDetailsPair.size
     }
-
 
     inner class DataViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         var mTextView: TextView = v.findViewById(R.id.reading_detail)
