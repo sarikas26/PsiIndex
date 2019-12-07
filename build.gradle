@@ -40,4 +40,8 @@ ext {
     rxandroid_version = '2.1.0'
     rxkotlin_version = '2.1.0'
     dagger_version = '2.21'
+    test_mockito_inline_version = '2.11.0'
+    test_json_version = '20190722'
+    test_mockito_core_version = '2.19.0'
+    test_anroidx_arch_core = '2.1.0'
 }

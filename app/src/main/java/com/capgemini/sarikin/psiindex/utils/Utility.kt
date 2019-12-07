@@ -44,8 +44,10 @@ object Utility {
 
     /**
      * Create and return psi index details for west region.
+     *
+     * Made public for testing.
      */
-    private fun getWestReadings(readings: Readings): List<ReadingDetailsPair> {
+    fun getWestReadings(readings: Readings): List<ReadingDetailsPair> {
         val readingDetailsPair = ArrayList<ReadingDetailsPair>()
         readingDetailsPair.add(
             ReadingDetailsPair(
@@ -125,7 +127,7 @@ object Utility {
     /**
      * Create and return psi index details for east region.
      */
-    private fun getEastReadings(readings: Readings): List<ReadingDetailsPair> {
+    fun getEastReadings(readings: Readings): List<ReadingDetailsPair> {
         val readingDetailsPair = ArrayList<ReadingDetailsPair>()
         readingDetailsPair.add(
             ReadingDetailsPair(
@@ -204,8 +206,10 @@ object Utility {
 
     /**
      * Create and return psi index details for north region.
+     *
+     * Made public for testing.
      */
-    private fun getNorthReadings(readings: Readings): List<ReadingDetailsPair> {
+     fun getNorthReadings(readings: Readings): List<ReadingDetailsPair> {
         val readingDetailsPair = ArrayList<ReadingDetailsPair>()
         readingDetailsPair.add(
             ReadingDetailsPair(
@@ -284,8 +288,10 @@ object Utility {
 
     /**
      * Create and return psi index details for south region.
+     *
+     * Made public for testing.
      */
-    private fun getSouthReadings(readings: Readings): List<ReadingDetailsPair> {
+     fun getSouthReadings(readings: Readings): List<ReadingDetailsPair> {
         val readingDetailsPair = ArrayList<ReadingDetailsPair>()
         readingDetailsPair.add(
             ReadingDetailsPair(
@@ -364,8 +370,10 @@ object Utility {
 
     /**
      * Create and return psi index details for central region.
+     *
+     * Made public for testing.
      */
-    private fun getCentralReadings(readings: Readings): List<ReadingDetailsPair> {
+     fun getCentralReadings(readings: Readings): List<ReadingDetailsPair> {
         val readingDetailsPair = ArrayList<ReadingDetailsPair>()
         readingDetailsPair.add(
             ReadingDetailsPair(

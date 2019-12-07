@@ -1,6 +1,5 @@
 package com.capgemini.sarikin.psiindex.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.capgemini.sarikin.psiindex.api.SchedulerProvider
@@ -43,7 +42,6 @@ class PsiDataViewModel(
         } else {
             psiData.postValue(psiResponse)
         }
-        Log.d("MainActivity", psiResponse.region_metadata[0].name)
     }
 
     /**
@@ -52,7 +50,6 @@ class PsiDataViewModel(
     private fun onError(error: Throwable) {
         progressDialog.value = false
         errorMsg.postValue(error.message)
-        Log.d("MainActivity", error.message)
     }
 
     /**
